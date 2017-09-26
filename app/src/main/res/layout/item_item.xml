@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="title"
+            type="String"/>
+    </data>
+
+        <android.support.v7.widget.CardView
+            android:clickable="true"
+            android:id="@+id/item_daily"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            app:cardCornerRadius="0dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <ImageView
+                android:scaleType="centerCrop"
+                android:id="@+id/img_item"
+                android:layout_width="match_parent"
+                android:layout_height="210dp" />
+
+            <TextView
+                android:paddingRight="15dp"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:text="@{title}"
+                android:gravity="right|center_vertical"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+        </android.support.v7.widget.CardView>
+</layout>

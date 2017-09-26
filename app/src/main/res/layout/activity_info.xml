@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="#ECECEC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorMain"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:theme="@style/toolBarColor">
+
+        <ImageView
+            android:id="@+id/title_main"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/label" />
+
+        <ImageView
+            android:id="@+id/info_back"
+            android:layout_width="25dp"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="left"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/selector_back" />
+    </android.support.v7.widget.Toolbar>
+
+
+        <Button
+            android:id="@+id/info_collect"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="收藏"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="清除缓存不会影响收藏以及已保存的照片"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="清除缓存"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" />
+
+        <TextView
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="1dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NationalGeographic是开源项目\n跳转到GitHub提交反馈以及检查更新"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="提交反馈"
+            android:layout_marginBottom="5dp"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="检查更新"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/info_disclaimer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="5dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="免责申明"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="5dp"
+            android:background="#FFFFFF"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="关于"
+            android:textAllCaps="false"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/app_version_show"/>
+
+    </FrameLayout>
+
+</layout>

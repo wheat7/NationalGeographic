@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<data>-->
+
+        <!--<variable-->
+            <!--name="act"-->
+            <!--type="com.wheat7.cashew.activity.WebActivity" />-->
+    <!--</data>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorMain"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/toolBarColor">
+
+
+
+            <ImageView
+                android:id="@+id/title_web"
+                android:layout_width="180dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:src="@drawable/label" />
+
+
+
+            <ImageView
+                android:id="@+id/web_back"
+                android:layout_width="25dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_gravity="left"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/selector_back" />
+
+            <TextView
+                android:id="@+id/tv_close"
+                android:layout_width="45dp"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:text="关闭"
+                android:textColor="#b3ffffff"
+                android:textSize="15sp"
+                android:visibility="invisible" />
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <WebView
+                android:id="@+id/web_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ProgressBar
+                android:id="@+id/web_progress"
+                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:progressDrawable="@drawable/layer_progress_web" />
+        </FrameLayout>
+    </LinearLayout>
+
+
+</layout>
