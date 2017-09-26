@@ -34,11 +34,18 @@ class InfoActivity : BaseActivity<ActivityInfoBinding>() {
             onBackPressed()
         })
 
-        info_disclaimer.setOnClickListener( {
-            val dialogBuild : AlertDialog? = AlertDialog.Builder(this@InfoActivity)
+
+        info_feedback.setOnClickListener {
+            val intent: Intent = Intent(this@InfoActivity, WebActivity::class.java)
+            intent.putExtra("URL", "https://github.com/wheat7/NationalGeographic/issues")
+            this@InfoActivity.startActivity(intent)
+        }
+
+        info_disclaimer.setOnClickListener({
+            val dialogBuild: AlertDialog? = AlertDialog.Builder(this@InfoActivity)
                     .setTitle("免责申明")
                     .setMessage("应用中的所有数据来源于网络，所有内容版权归原创者或所有方所有，应用仅作学习交流之用，严禁用于商业用途，代码遵守GPL3.0协议，请勿违反")
-                    .setPositiveButton("确定" , null)
+                    .setPositiveButton("确定", null)
                     .show()
         })
 

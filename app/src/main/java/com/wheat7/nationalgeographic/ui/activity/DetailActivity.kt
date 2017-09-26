@@ -11,6 +11,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.*
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat

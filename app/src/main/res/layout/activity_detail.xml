@@ -188,8 +188,7 @@
                                 android:visibility="@{saveProgressVisible?View.VISIBLE:View.GONE}"
                                 android:layout_gravity="center"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:progressBackgroundTint="#FFFFFF"/>
+                                android:layout_height="match_parent" />
 
                         </FrameLayout>
 

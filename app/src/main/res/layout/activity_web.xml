@@ -2,12 +2,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--<data>-->
-
-        <!--<variable-->
-            <!--name="act"-->
-            <!--type="com.wheat7.cashew.activity.WebActivity" />-->
-    <!--</data>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +9,7 @@
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/tool_bar"
+            android:id="@+id/toolbar_web"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorMain"

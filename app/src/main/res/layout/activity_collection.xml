@@ -18,14 +18,14 @@
             app:theme="@style/toolBarColor">
 
             <ImageView
-                android:id="@+id/title_main"
+                android:id="@+id/collection_title"
                 android:layout_width="180dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
                 android:src="@drawable/label" />
 
             <ImageView
-                android:id="@+id/info_back"
+                android:id="@+id/back_collection"
                 android:layout_width="25dp"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="left"

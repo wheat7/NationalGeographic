@@ -44,6 +44,9 @@ class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
         recycler_collection.layoutManager = LinearLayoutManager(this)
 //        mAdapter.setOnCollectClickListener(this)
         mAdapter.setOnItemClickListener(this)
+        back_collection.setOnClickListener({
+            onBackPressed()
+        })
     }
 
     override fun onItemClick(adapter: CollectionAdapter, position: Int, view: View, collectionViewHolder: CollectionAdapter.CollectionViewHolder, data: Detail) {

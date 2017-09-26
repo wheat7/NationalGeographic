@@ -3,11 +3,14 @@ package com.wheat7.nationalgeographic.ui.activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.support.v7.widget.Toolbar;
 
 import com.wheat7.nationalgeographic.R
 import com.wheat7.nationalgeographic.databinding.ActivityWebBinding
@@ -17,31 +20,32 @@ import kotlinx.android.synthetic.main.activity_web.*
  * Created by wheat7 on 2017/8/19.
  */
 
-class WebActivity : BaseActivity<ActivityWebBinding>() {
-
-    override val layoutId: Int
-        get() = R.layout.activity_web
+//因为LifecycleActivity中没有了setSupportActionBar()和getSupportActionBar(),未解决，所以不能继承BaseActitivy
+class WebActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
-        if (getBinding().webView.canGoBack()) {
-            getBinding().webView.goBack()
+        if (web_view.canGoBack()) {
+            web_view.goBack()
         } else {
             super.onBackPressed()
         }
     }
 
-    override fun initView(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_web)
         val intent = intent
+
         val url = intent.getStringExtra("URL")
-        getBinding().webView.settings.javaScriptEnabled = true
-        getBinding().webView.loadUrl(url)
-        getBinding().webView.settings.setSupportZoom(true)
-        getBinding().webView.settings.displayZoomControls = false
-        getBinding().webView.settings.useWideViewPort = true
-        getBinding().webView.settings.loadWithOverviewMode = true
-        getBinding().webView.settings.setAppCacheEnabled(true)
-//        setSupportActionBar(getBinding().toolBar)
-//        getSupportActionBar().setDisplayShowTitleEnabled(false)
+        web_view.settings.javaScriptEnabled = true
+        web_view.loadUrl(url)
+        web_view.settings.setSupportZoom(true)
+        web_view.settings.displayZoomControls = false
+        web_view.settings.useWideViewPort = true
+        web_view.settings.loadWithOverviewMode = true
+        web_view.settings.setAppCacheEnabled(true)
+        setSupportActionBar(toolbar_web)
+        getSupportActionBar()!!.setDisplayShowTitleEnabled(false)
         val chromeClient = object : WebChromeClient() {
             override fun onReceivedTitle(view: WebView, title: String) {
                 super.onReceivedTitle(view, title)
@@ -50,7 +54,7 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
 
             override fun onProgressChanged(view: WebView, newProgress: Int) {
                 super.onProgressChanged(view, newProgress)
-                getBinding().webProgress.progress = newProgress
+                web_progress.progress = newProgress
             }
         }
 
@@ -73,19 +77,7 @@ class WebActivity : BaseActivity<ActivityWebBinding>() {
         }
     }
 
-    /**
-     * Back click
-     */
-    fun onIcBackClick() {
-        onBackPressed()
-    }
 
-    /**
-     * Close  click
-     */
 
-    fun onCloseClick() {
-        this.finish()
-    }
 
 }

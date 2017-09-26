@@ -23,7 +23,6 @@
 
         <activity android:name=".ui.activity.DetailActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.InfoActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ui.activity.WebActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.CollectionActivity" android:screenOrientation="portrait" />
     </application>
 
