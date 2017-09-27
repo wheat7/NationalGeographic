@@ -1,7 +1,9 @@
 # NationalGeographic  国家地理
 NationalGeographic  国家地理是一个第三方的国家地理-每日精选客户端
 
-<img src="/screenshots/1.gif" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/2.gif" alt="screenshot" title="screenshot" width="270" height="486" />  <img src="/screenshots/3.gif" alt="screenshot" title="screenshot" width="270" height="486" />  
+<img src="/screenshots/1.gif" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/2.gif" alt="screenshot" title="screenshot" width="270" height="486" /> 
+
+ <img src="/screenshots/3.gif" alt="screenshot" title="screenshot" width="270" height="486" />  
   
 ## 技术细节
 国家地理的UI基本都是基于原生实现     
