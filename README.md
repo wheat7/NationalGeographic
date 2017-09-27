@@ -9,7 +9,7 @@ NationalGeographic  国家地理是一个第三方的国家地理-每日精选�
 
 <img src="/screenshots/4.png" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/5.png" alt="screenshot" title="screenshot" width="270" height="486" />  <img src="/screenshots/6.png" alt="screenshot" title="screenshot" width="270" height="486" />  
   
-<img src="/screenshots/7.png" alt="screenshot" title="screenshot" width="270" height="486" />
+<img src="/screenshots/7.png" alt="screenshot" title="screenshot" width="270" height="486" /> <img src="/screenshots/8.png" alt="screenshot" title="screenshot" width="270" height="486" />
   
   
 ## 技术细节
