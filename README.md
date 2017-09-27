@@ -1,9 +1,7 @@
 # NationalGeographic  国家地理
 NationalGeographic  国家地理是一个第三方的国家地理-每日精选客户端
 
-<img src="/screenshots/1.gif" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/2.gif" alt="screenshot" title="screenshot" width="270" height="486" /> 
-
- <img src="/screenshots/3.gif" alt="screenshot" title="screenshot" width="270" height="486" />  
+<img src="/screenshots/1.gif" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/2.gif" alt="screenshot" title="screenshot" width="270" height="486" />  <img src="/screenshots/3.gif" alt="screenshot" title="screenshot" width="270" height="486" />  
   
 ## 技术细节
 国家地理的UI基本都是基于原生实现     
@@ -45,7 +43,9 @@ NationalGeographic  国家地理是一个第三方的国家地理-每日精选�
 ### 后续国家地理将持续迭代优化
 
 ## 源码分析&教程
-后续会发布到我的[小站](http:wheat7.com)和[简书](http://www.jianshu.com/u/6005415e3069)
+最新的东西还是遇到了很多坑，后续给大家分析、填坑，点关注不迷路，给国家地理一颗star吧 
+
+后续发布到我的[小站](http:wheat7.com)和[简书](http://www.jianshu.com/u/6005415e3069)
 
 ## 更新日志
 * v1.0(2017-9-27): 初版
