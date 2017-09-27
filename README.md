@@ -3,6 +3,8 @@ NationalGeographic  国家地理是一个第三方的国家地理-每日精选�
 一个比官方还像官方,有质感、功能完善的国家地理-每日精选客户端 (逃)   
 使用了最新技术Android Architecture Components（lifecycle 组件） & Kotlin (填坑之旅)
 
+### [下载APK](https://github.com/wheat7/NationalGeographic/blob/master/app/release/app-release.apk)
+
 <img src="/screenshots/1.gif" alt="screenshot" title="screenshot" width="270" height="486" />   <img src="/screenshots/2.gif" alt="screenshot" title="screenshot" width="270" height="486" />  <img src="/screenshots/3.gif" alt="screenshot" title="screenshot" width="270" height="486" />  
   
 ## 技术细节
