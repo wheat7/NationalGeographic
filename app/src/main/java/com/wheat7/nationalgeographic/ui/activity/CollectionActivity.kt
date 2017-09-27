@@ -23,9 +23,8 @@ import kotlinx.android.synthetic.main.activity_collection.*
  * https://github.com/wheat7
  */
 
-//列表可取消收藏功能出现错乱问题，暂时放弃，代码保留，下个版本解决
 class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
-//        CollectionAdapter.OnCollectClickListener,
+        CollectionAdapter.OnCollectClickListener,
         CollectionAdapter.OnItemClickListener {
 
     var mAdapter: CollectionAdapter = CollectionAdapter(this)
@@ -42,7 +41,7 @@ class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
         }
         recycler_collection.adapter = mAdapter
         recycler_collection.layoutManager = LinearLayoutManager(this)
-//        mAdapter.setOnCollectClickListener(this)
+        mAdapter.setOnCollectClickListener(this)
         mAdapter.setOnItemClickListener(this)
         back_collection.setOnClickListener({
             onBackPressed()
@@ -56,13 +55,17 @@ class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
         this@CollectionActivity.startActivityForResult(intent, REQUEST_INFO)
     }
 
-//    override fun onCollectClick(adapter: CollectionAdapter, position: Int, view: View, collectionViewHolder: CollectionAdapter.CollectionViewHolder, data: Detail) {
-//        Collects.deleteItem(data.picture!!.get(position).id)
-//        mAdapter.removeItem(position)
-//        if (mAdapter.itemCount == 0) {
-//            this@CollectionActivity.finish()
-//        }
+    override fun onCollectClick(adapter: CollectionAdapter, position: Int, view: View, collectionViewHolder: CollectionAdapter.CollectionViewHolder, data: Detail) {
+        Collects.deleteItem(data.picture!!.get(position).id)
+        mAdapter.setData(Collects.getDetail())
+        if (mAdapter.itemCount == 0) {
+            this@CollectionActivity.finish()
+        }
 
+//        从adapter中remove会出现错乱问题 直接重置data 下个版本解决
+//        mAdapter.removeItem(position)
+
+        //属性动画会有item view错乱问题 预留 后续版本解决
 //        val animatorSet = AnimatorSet()
 //        val transY = ObjectAnimator.ofFloat(view, "translationY", 300f)
 //        val alpha = ObjectAnimator.ofFloat(view, "alpha", 1f, 0f)
@@ -77,7 +80,14 @@ class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
 //
 //            override fun onAnimationEnd(animator: Animator) {
 //                Collects.deleteItem(data.picture!!.get(position).id)
-//                mAdapter.removeItem(position)
+////                mAdapter.removeItem(position)
+//                mAdapter.setData(Collects.getDetail())
+//                view.animate().alpha(1f)
+//                view.animate().translationY(-300f)
+//
+//                if (mAdapter.itemCount == 0) {
+//                    this@CollectionActivity.finish()
+//                }
 //            }
 //
 //            override fun onAnimationCancel(animator: Animator) {
@@ -88,7 +98,7 @@ class CollectionActivity : BaseActivity<ActivityCollectionBinding>(),
 //
 //            }
 //        })
-//    }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_INFO && resultCode == Activity.RESULT_OK) {

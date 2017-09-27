@@ -18,9 +18,9 @@ import com.wheat7.nationalgeographic.databinding.ItemItemBinding
  * Created by wheat7 on 2017/9/26.
  * https://github.com/wheat7
  */
-class CollectionAdapter(context : Context) : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
+class CollectionAdapter(context: Context) : RecyclerView.Adapter<CollectionAdapter.CollectionViewHolder>() {
 
-    var mData : Detail? = null
+    var mData: Detail? = null
     private var mContext: Context? = null
 
     init {
@@ -32,13 +32,13 @@ class CollectionAdapter(context : Context) : RecyclerView.Adapter<CollectionAdap
         notifyDataSetChanged()
     }
 
-    fun removeItem(pos : Int) {
+    fun removeItem(pos: Int) {
         if (mData != null) {
             mData!!.picture!!.removeAt(pos)
-            notifyItemRemoved(pos)
-            notifyItemRangeChanged(pos,mData!!.picture!!.size - pos)
+//            notifyItemRemoved(pos)
+//            notifyItemRangeChanged(pos,mData!!.picture!!.size - pos)
         }
-        //            notifyDataSetChanged()
+        notifyDataSetChanged()
 
     }
 
@@ -57,15 +57,15 @@ class CollectionAdapter(context : Context) : RecyclerView.Adapter<CollectionAdap
                 mOnItemClickListener!!.onItemClick(this, position, view, holder, mData!!)
             }
         })
-//        holder?.binding!!.collect.setOnClickListener({ view ->
-//            if (mOnCollectClickListener != null) {
-//                mOnCollectClickListener!!.onCollectClick(this, position, holder!!.binding!!.collect, holder, mData!!)
-//            }
-//        })
+        holder?.binding!!.collect.setOnClickListener({ view ->
+            if (mOnCollectClickListener != null) {
+                mOnCollectClickListener!!.onCollectClick(this, position, holder!!.binding!!.collect, holder, mData!!)
+            }
+        })
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int) : CollectionViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CollectionViewHolder {
         val binding = DataBindingUtil
                 .inflate<ItemCollectionBinding>(LayoutInflater.from(parent?.getContext()), R.layout.item_collection,
                         parent, false)
@@ -73,7 +73,7 @@ class CollectionAdapter(context : Context) : RecyclerView.Adapter<CollectionAdap
     }
 
 
-    class CollectionViewHolder (binding: ItemCollectionBinding) : RecyclerView.ViewHolder(binding.root) {
+    class CollectionViewHolder(binding: ItemCollectionBinding) : RecyclerView.ViewHolder(binding.root) {
         var binding: ItemCollectionBinding? = null
 
         init {
@@ -97,13 +97,14 @@ class CollectionAdapter(context : Context) : RecyclerView.Adapter<CollectionAdap
     /**
      * Collect click callback
      */
-//    private var mOnCollectClickListener : OnCollectClickListener? = null
-//
-//    interface OnCollectClickListener {
-//        fun onCollectClick(adapter: CollectionAdapter, position: Int, view: View, collectionViewHolder: CollectionViewHolder, data: Detail)
-//    }
-//    fun setOnCollectClickListener(onCollectClickListener: OnCollectClickListener) {
-//        mOnCollectClickListener = onCollectClickListener
-//    }
+    private var mOnCollectClickListener: OnCollectClickListener? = null
+
+    interface OnCollectClickListener {
+        fun onCollectClick(adapter: CollectionAdapter, position: Int, view: View, collectionViewHolder: CollectionViewHolder, data: Detail)
+    }
+
+    fun setOnCollectClickListener(onCollectClickListener: OnCollectClickListener) {
+        mOnCollectClickListener = onCollectClickListener
+    }
 
 }

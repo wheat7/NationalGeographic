@@ -73,6 +73,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
         if (firstPos != 0) {
             view_pager.currentItem = firstPos
             getBinding().pos = firstPos + 1
+            mCurrentPos = firstPos
         }
         view_pager.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
@@ -121,7 +122,6 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                 }
             }
         })
-        checkPermission()
         initClick()
         setResult(Activity.RESULT_OK)
     }
@@ -135,7 +135,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
                     permissions,
                     REQUEST_PERMISSIONS)
         } else {
-//            getPic()
+            savePhoto()
         }
     }
 
@@ -144,7 +144,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
             REQUEST_PERMISSIONS -> {
                 run {
                     if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                        getPic()
+                        savePhoto()
                     }
                 }
                 return
@@ -179,53 +179,57 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>() {
         })
 
         detail_save.setOnClickListener({
-            val handler: Handler = Handler()
-            getBinding().saveProgressVisible = true
-            Glide.with(this)
-                    .load(mPictures!!.get(mCurrentPos).url).asBitmap().listener(object : RequestListener<String?, Bitmap?> {
-                override fun onException(e: Exception?, model: String?, target: Target<Bitmap?>?, isFirstResource: Boolean): Boolean {
+            checkPermission()
+        })
+    }
+
+    private fun savePhoto() {
+        val handler: Handler = Handler()
+        getBinding().saveProgressVisible = true
+        Glide.with(this)
+                .load(mPictures!!.get(mCurrentPos).url).asBitmap().listener(object : RequestListener<String?, Bitmap?> {
+            override fun onException(e: Exception?, model: String?, target: Target<Bitmap?>?, isFirstResource: Boolean): Boolean {
+                handler.post({
+                    Toast.makeText(this@DetailActivity, "下载失败，请检查网络重试", Toast.LENGTH_SHORT).show()
+                    getBinding().saveProgressVisible = false
+                })
+                return true
+            }
+
+            override fun onResourceReady(resource: Bitmap?, model: String?, target: Target<Bitmap?>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
+                val fileDirPath: File = File(Environment.getExternalStorageDirectory().path + "/NationalGeographic/" + "/image/")
+                if (!fileDirPath.exists()) {
+                    fileDirPath.mkdirs()
+                }
+                val fileName = mPictures!!.get(mCurrentPos).id + ".jpeg"
+
+                val filePath: File = File(fileDirPath, fileName)
+
+                if (filePath.exists()) {
                     handler.post({
-                        Toast.makeText(this@DetailActivity, "下载失败，请检查网络重试", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@DetailActivity, "此照片已保存过", Toast.LENGTH_SHORT).show()
                         getBinding().saveProgressVisible = false
                     })
-                    return true
-                }
-
-                override fun onResourceReady(resource: Bitmap?, model: String?, target: Target<Bitmap?>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
-                    val fileDirPath: File = File(Environment.getExternalStorageDirectory().path + "/NationalGeographic/" + "/image/")
-                    if (!fileDirPath.exists()) {
-                        fileDirPath.mkdirs()
-                    }
-                    val fileName = mPictures!!.get(mCurrentPos).id + ".jpeg"
-
-                    val filePath: File = File(fileDirPath, fileName)
-
-                    if (filePath.exists()) {
+                } else {
+                    try {
+                        var fileOutputStream: FileOutputStream = FileOutputStream(filePath)
+                        Log.d("NationalGeographic", resource.toString())
+                        resource?.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
+                        fileOutputStream.flush()
+                        fileOutputStream.close()
                         handler.post({
-                            Toast.makeText(this@DetailActivity, "此照片已保存过", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@DetailActivity, "保存成功", Toast.LENGTH_SHORT).show()
                             getBinding().saveProgressVisible = false
                         })
-                    } else {
-                        try {
-                            var fileOutputStream: FileOutputStream = FileOutputStream(filePath)
-                            Log.d("NationalGeographic", resource.toString())
-                            resource?.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
-                            fileOutputStream.flush()
-                            fileOutputStream.close()
-                            handler.post({
-                                Toast.makeText(this@DetailActivity, "保存成功", Toast.LENGTH_SHORT).show()
-                                getBinding().saveProgressVisible = false
-                            })
-                        } catch (e: IOException) {
-                            handler.post({
-                                Toast.makeText(this@DetailActivity, "保存失败", Toast.LENGTH_SHORT).show()
-                                getBinding().saveProgressVisible = false
-                            })
-                        }
+                    } catch (e: IOException) {
+                        handler.post({
+                            Toast.makeText(this@DetailActivity, "保存失败,请检查网络及权限", Toast.LENGTH_SHORT).show()
+                            getBinding().saveProgressVisible = false
+                        })
                     }
-                    return true
                 }
-            }).into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-        })
+                return true
+            }
+        }).into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
     }
 }

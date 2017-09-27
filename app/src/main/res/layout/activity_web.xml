@@ -25,14 +25,11 @@
                 android:layout_gravity="center"
                 android:src="@drawable/label" />
 
-
-
             <ImageView
                 android:id="@+id/web_back"
                 android:layout_width="25dp"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="left"
-                android:layout_marginRight="15dp"
                 android:src="@drawable/selector_back" />
 
             <TextView
